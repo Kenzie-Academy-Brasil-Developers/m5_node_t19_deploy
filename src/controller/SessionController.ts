@@ -6,6 +6,6 @@ export class SessionController {
 
   public login = async (req: Request, res: Response): Promise<Response> => {
     const token = await this.sessionService.login(req.body);
-    return res.status(200).json(token);
+    return res.status(200).json({ token, msg: "alteração feita" });
   };
 }
