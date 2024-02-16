@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Detail {
+  id BigInt @id @default(autoincrement())
+
+  address String?
+  phone   String?
+  bio     String?
+
+  user User?
+}
+
+model User {
+  id BigInt @id @default(autoincrement())
+
+  username String @db.VarChar(255)
+  email    String @unique @db.VarChar(255)
+  password String
+
+  admin Boolean @default(false)
+
+  detailId BigInt? @unique
+  detail   Detail? @relation(fields: [detailId], references: [id], onDelete: Cascade)
+
+  albums Album[]
+}
+
+model Album {
+  id BigInt @id @default(autoincrement())
+
+  title String @db.VarChar(255)
+  band  String @db.VarChar(255)
+  year  Int
+
+  genres Genre[]
+
+  ownerId BigInt
+  owner   User   @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+}
+
+model Genre {
+  id BigInt @id @default(autoincrement())
+
+  name String @db.VarChar(255)
+
+  albums Album[]
+}

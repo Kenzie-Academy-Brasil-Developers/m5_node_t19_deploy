@@ -1,0 +1,19 @@
+Autenticação (token) não tem nada a ver com hash.
+
+
+Hash:
+    - "Hashear" um conjunto de caracteres.
+    - Uma vez hasheado NÃO deve ser possível "deshashear".
+Criptografia (nesse caso o token):
+    - Criptografar um conjunto de informação.
+    - As informações criptografadas podem ser acessadas.
+    - A criptografia não foi feita para guardar dados sensíveis.
+    - A criptografia pode ser desfeita a partir da chave utilizada para criptografar.
+
+
+400 -> Bad Request -> Requisição ruim.
+401 -> Unauthorized -> Não autorizado.
+403 -> Forbidden -> Proíbido.
+
+
+MD -> é uma abreviação de "Markdown".
