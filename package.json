@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "dotenv -e .env.dev -- tsnd --rs --cls --respawn src/server.ts",
     "generate:dev": "dotenv -e .env.dev -- npx prisma generate",
-    "migrate:dev": "dotenv -e .env.dev -- npx prisma migrate dev"
+    "migrate:dev": "dotenv -e .env.dev -- npx prisma migrate dev",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "migrate:prod": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
